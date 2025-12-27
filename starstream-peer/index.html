@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>simple-peer demo</title>
+    <style>
+      body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:24px}
+      textarea{width:600px;height:120px}
+      #outgoing{width:600px;word-wrap:break-word;white-space:normal;border:1px solid #ddd;padding:8px}
+    </style>
+  </head>
+  <body>
+    <h3>simple-peer demo</h3>
+    <p>Open this page in two tabs. Add <code>#1</code> to the URL of the initiator tab.</p>
+    <form>
+      <label>Paste remote signal JSON here:</label><br />
+      <textarea id="incoming"></textarea><br />
+      <button type="submit">Submit remote signal</button>
+    </form>
+    <h4>Local signal (copy to other peer)</h4>
+    <pre id="outgoing"></pre>
+    <h4>New Stuff</h4>
+    <button onclick="myFunction()">Click me</button> 
+    <video width="320" height="240" controls>
+    </video> 
+    <script src="bundle.js"></script>
+  </body>
+</html>

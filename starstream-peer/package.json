@@ -1,0 +1,25 @@
+{
+  "name": "starstream-peer",
+  "version": "1.0.0",
+  "description": "peer for streaming service",
+  "license": "ISC",
+  "author": "starmaid",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "shx rm -rf dist && shx mkdir -p dist && esbuild index.js --bundle --minify --platform=browser --outfile=dist/bundle.js && copyfiles index.html dist",
+    "dev": "shx rm -rf dist && shx mkdir -p dist && esbuild index.js --bundle --sourcemap --platform=browser --outfile=dist/bundle.js && copyfiles index.html dist && live-server dist --port=8080",
+    "start": "live-server dist --port=8080"
+  },
+  "dependencies": {
+    "@thaunknown/simple-peer": "github:thaunknown/simple-peer",
+    "events": "^3.3.0",
+    "buffer": "^6.0.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.9",
+    "live-server": "^1.2.2",
+    "copyfiles": "^2.4.1",
+    "shx": "^0.4.0"
+  }
+}
