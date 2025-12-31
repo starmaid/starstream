@@ -48,6 +48,34 @@ p.on('stream', stream => {
   video.play()
 })
 
-function myFunction() {
-  window.navigator.mediaDevices.getUserMedia(constraints)
-}
+// Request local media, show preview, and add to the peer
+const testBtn = document.querySelector('#testclick')
+testBtn.addEventListener('click', async ev => {
+  ev.preventDefault()
+  const constraints = { video: true, audio: true }
+  try {
+    const stream = await window.navigator.mediaDevices.getUserMedia(constraints)
+
+    // show local preview (will be replaced if remote stream arrives)
+    const video = document.querySelector('video')
+    if ('srcObject' in video) {
+      video.srcObject = stream
+    } else {
+      video.src = window.URL.createObjectURL(stream)
+    }
+    video.muted = true
+    try { await video.play() } catch {}
+
+    // add stream to the peer (fallback to addTrack if addStream unavailable)
+    if (typeof p.addStream === 'function') {
+      p.addStream(stream)
+    } else if (typeof p.addTrack === 'function') {
+      stream.getTracks().forEach(track => p.addTrack(track, stream))
+    }
+
+    console.log('Local media acquired and added to peer')
+  } catch (err) {
+    console.error('getUserMedia error', err)
+    alert('getUserMedia error: ' + (err && err.message ? err.message : err))
+  }
+})

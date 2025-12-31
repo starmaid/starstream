@@ -18,7 +18,13 @@ the web frontend.
 - loads peers (and displays them) and TURN (in background) from server
 - allows connection to other peers
 
+## commands
 
+```
+npm install
+npm run build
+npm start
+```
 
 
 ## Learning
