@@ -10,6 +10,8 @@ signalling server.
 - sends TURN information
 - forwards connection init messages between peers
 
+
+
 ## starstream-peer
 
 the web frontend.
@@ -17,6 +19,11 @@ the web frontend.
 - By default - connects to the same server that is hosting this app
 - loads peers (and displays them) and TURN (in background) from server
 - allows connection to other peers
+- creates and sends media streams
+    - video from camera
+    - audio from microphone
+    - video from screenshare
+- allows saving streams to device
 
 ## commands
 
