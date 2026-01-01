@@ -1,3 +1,7 @@
+# drawio files
+*.drawio.bkp
+*.drawio.dtmp
+
 # Node modules
 node_modules/
 **/node_modules/
